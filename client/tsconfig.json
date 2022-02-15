@@ -3,7 +3,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "./src",
+        "baseUrl": "./",
         "outDir": "./dist/out-tsc",
         "sourceMap": true,
         "declaration": false,
@@ -19,6 +19,8 @@
         ]
     },
     "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true,
         "enableI18nLegacyMessageIdFormat": false
     }
 }
