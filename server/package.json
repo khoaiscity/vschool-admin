@@ -74,7 +74,7 @@
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^6.0.0",
     "http-proxy-middleware": "^0.19.1",
-    "typescript": "~3.5.3"
+    "typescript": "^3.5.3"
   },
   "gitHead": "e17358d04cf9986fc692fdea37b582111932551d",
   "_resolved": "",

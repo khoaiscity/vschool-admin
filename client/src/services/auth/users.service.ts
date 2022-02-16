@@ -13,6 +13,6 @@ export class UsersService {
     public getUsersAsync(): Observable<any> {
         const httpHeaders = new HttpHeaders({ Authorization: `${localStorage.getItem('accessToken')}` });
         let res = localStorage.getItem('accessToken')
-        return this._httpClient.get<any>(`${API}/admin/current-user`,{ headers: httpHeaders });
+        return this._httpClient.get<any>(`api/current-user`,{ headers: httpHeaders });
     }
 }

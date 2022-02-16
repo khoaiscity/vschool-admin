@@ -104,8 +104,8 @@ export class ExpressServer {
 
     // create the proxy (without context)
     const adminServerProxy = proxy(adminProxyOptions);
-    const memberServerProxy = proxy(memberProxyOptions);
-    const assetsServerProxy = proxy(assetsProxyOptions);
+    // const memberServerProxy = proxy(memberProxyOptions);
+    // const assetsServerProxy = proxy(assetsProxyOptions);
 
     const isMultipartRequest = (req: any) => {
       let contentTypeHeader = req.headers['content-type'];
@@ -129,43 +129,43 @@ export class ExpressServer {
       }),
     );
 
-    this.app.use('/resources', assetsServerProxy);
+    // this.app.use('/resources', assetsServerProxy);
 
     this.app.use('/api', adminServerProxy);
 
-    this.app.use('/api-m', memberServerProxy);
+    // this.app.use('/api-m', memberServerProxy);
 
     // Expose the front-end assets via Express, not as LB4 route
-    this.app.use('/api-lc', this.lbApp.requestHandler);
+    // this.app.use('/api-lc', this.lbApp.requestHandler);
 
-    this.app.post('/login/account', function(_req: Request, res: Response) {
-      const data = _req.body;
-      if (
-        !(data.userName === 'admin' || data.userName === 'user') ||
-        data.password !== 'admin'
-      ) {
-        return {msg: `Invalid username or password（admin/admin）`};
-      }
-
-      res.json({
-        msg: 'ok',
-        user: {
-          token: '123456789',
-          name: data.userName,
-          email: `${data.userName}@qq.com`,
-          id: 10000,
-          time: +new Date(),
-        },
-      });
-    });
+    // this.app.post('/login/account', function(_req: Request, res: Response) {
+    //   const data = _req.body;
+    //   if (
+    //     !(data.userName === 'admin' || data.userName === 'user') ||
+    //     data.password !== 'admin'
+    //   ) {
+    //     return {msg: `Invalid username or password（admin/admin）`};
+    //   }
+    //
+    //   res.json({
+    //     msg: 'ok',
+    //     user: {
+    //       token: '123456789',
+    //       name: data.userName,
+    //       email: `${data.userName}@qq.com`,
+    //       id: 10000,
+    //       time: +new Date(),
+    //     },
+    //   });
+    // });
 
     // Custom Express routes
     this.app.get('/', function(_req: Request, res: Response) {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
-    this.app.get('/hello', function(_req: Request, res: Response) {
-      res.send('Hello world!');
-    });
+    // this.app.get('/hello', function(_req: Request, res: Response) {
+    //   res.send('Hello world!');
+    // });
 
     // Serve static files in the public folder
     this.app.use(express.static(path.join(__dirname, '../public')));
