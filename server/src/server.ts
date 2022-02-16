@@ -136,7 +136,7 @@ export class ExpressServer {
     // this.app.use('/api-m', memberServerProxy);
 
     // Expose the front-end assets via Express, not as LB4 route
-    // this.app.use('/api-lc', this.lbApp.requestHandler);
+    this.app.use('/api-lc', this.lbApp.requestHandler);
 
     // this.app.post('/login/account', function(_req: Request, res: Response) {
     //   const data = _req.body;
