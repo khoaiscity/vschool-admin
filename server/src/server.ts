@@ -105,7 +105,7 @@ export class ExpressServer {
     // create the proxy (without context)
     const adminServerProxy = proxy(adminProxyOptions);
     // const memberServerProxy = proxy(memberProxyOptions);
-    // const assetsServerProxy = proxy(assetsProxyOptions);
+    const assetsServerProxy = proxy(assetsProxyOptions);
 
     const isMultipartRequest = (req: any) => {
       let contentTypeHeader = req.headers['content-type'];
@@ -129,7 +129,7 @@ export class ExpressServer {
       }),
     );
 
-    // this.app.use('/resources', assetsServerProxy);
+    this.app.use('/resources', assetsServerProxy);
 
     this.app.use('/api', adminServerProxy);
 
