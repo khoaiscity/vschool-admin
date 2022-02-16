@@ -20,7 +20,8 @@ const INTERCEPTOR_PROVIDES = [
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
-    scrollPositionRestoration: 'enabled'
+    scrollPositionRestoration: 'enabled',
+    useHash: true
 };
 
 @NgModule({
